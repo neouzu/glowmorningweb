@@ -1,0 +1,19 @@
+{
+  "name": "glowmorning-web",
+  "version": "1.0.0",
+  "description": "GlowMorning 브랜딩 웹사이트 - 미라클 모닝 습관 형성 앱",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "glowmorning",
+    "miracle morning",
+    "habit tracking",
+    "morning routine"
+  ],
+  "author": "GlowMorning Team",
+  "license": "MIT"
+}
