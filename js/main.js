@@ -4,6 +4,63 @@
  */
 
 // ===================================
+// Navigation & Scroll Effects
+// ===================================
+
+/**
+ * Handle navbar scroll effect
+ */
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile menu toggle
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+}
+
+/**
+ * Handle background transition on scroll
+ */
+function initBackgroundTransition() {
+    const body = document.body;
+    const heroSection = document.querySelector('.hero-section');
+    const featuresSection = document.querySelector('.features-section');
+
+    window.addEventListener('scroll', debounce(() => {
+        const heroBottom = heroSection ? heroSection.offsetHeight : 0;
+        const scrollPosition = window.scrollY;
+
+        // Transition to light mode after hero section
+        if (scrollPosition > heroBottom * 0.7) {
+            body.classList.add('scrolled');
+        } else {
+            body.classList.remove('scrolled');
+        }
+    }, 10));
+}
+
+// ===================================
 // Utility Functions
 // ===================================
 
@@ -537,6 +594,10 @@ function init() {
 }
 
 function initializeApp() {
+    // Navigation & Background Transitions (NEW)
+    initNavbar();
+    initBackgroundTransition();
+
     // Core features
     initSmoothScroll();
     initCounters();
